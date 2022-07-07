@@ -24,7 +24,8 @@ import {
   ShoppingCartOutlined,
   BookOutlined,
   FileUnknownOutlined,
-  ProfileOutlined
+  ProfileOutlined,
+  UsergroupAddOutlined
 } from '@ant-design/icons';
 import { APP_PREFIX_PATH, AUTH_PREFIX_PATH } from 'configs/AppConfig'
 
@@ -201,7 +202,87 @@ const dashBoardNavTree = [{
       icon: FundOutlined,
       breadcrumb: false,
       submenu: []
-    }
+    },
+    {
+      key: 'dashboards-newJob',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewJobForm`,
+      title: 'Crear usuario',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-listUsers',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListUsers`,
+      title: 'Usuarios',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-newTask',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewTask`,
+      title: 'Crear Tarea',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-NewZone',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewZone`,
+      title: 'Crear Zona',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-NewProcese',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewProcese`,
+      title: 'Crear Proceso',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-NewProduct',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewProduct`,
+      title: 'Crear Producto',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-NewStation',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewStation`,
+      title: 'Crear estacion',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-ListProcesses',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListProcesses`,
+      title: 'Listado de procesos',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-ListStation',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListStation`,
+      title: 'Listado de estaciones',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-ListZone',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListZone`,
+      title: 'Listado de zonas',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
   ]
 }]
 
@@ -946,10 +1027,10 @@ const docsNavTree = [{
 
 const navigationConfig = [
   ...dashBoardNavTree,
-  ...appsNavTree,
-  ...componentsNavTree,
-  ...extraNavTree,
-  ...docsNavTree
+  // ...appsNavTree,
+  // ...componentsNavTree,
+  // ...extraNavTree,
+  // ...docsNavTree
 ]
 
 export default navigationConfig;

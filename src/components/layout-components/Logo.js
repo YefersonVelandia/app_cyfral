@@ -52,7 +52,8 @@ export const Logo = (props) => {
     <div
       className={getLogoDisplay(isMobile, props.mobileLogo)} 
       style={{width: `${getLogoWidthGutter(props, isMobile)}`}}>
-      <img src={getLogo(props)} alt={`${APP_NAME} logo`}/>
+      <h3>Cyfral</h3>  
+      {/* <img src={getLogo(props)} alt={`${APP_NAME} logo`}/> */}
     </div>
   )
 }

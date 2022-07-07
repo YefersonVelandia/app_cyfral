@@ -20,8 +20,7 @@ const LoginTwo = props => {
 					<div className="container d-flex flex-column justify-content-center h-100">
 						<Row justify="center">
 							<Col xs={24} sm={24} md={20} lg={12} xl={8}>
-								<h1>Sign In</h1>
-								<p>Don't have an account yet? <a href="/auth/register-2">Sign Up</a></p>
+								{/* <p>Don't have an account yet? <a href="/auth/register-2">Sign Up</a></p> */}
 								<div className="mt-4">
 									<LoginForm {...props}/>
 								</div>
@@ -32,20 +31,20 @@ const LoginTwo = props => {
 				<Col xs={0} sm={0} md={0} lg={8}>
 					<div className="d-flex flex-column justify-content-between h-100 px-4" style={backgroundStyle}>
 						<div className="text-right">
-							<img src="/img/logo-white.png" alt="logo"/>
+							{/* <img src="/img/logo-white.png" alt="logo"/> */}
 						</div>
 						<Row justify="center">
 							<Col xs={0} sm={0} md={0} lg={20}>
-								<img className="img-fluid mb-5" src="/img/others/img-18.png" alt=""/>
-								<h1 className="text-white">Welcome to emilus</h1>
-								<p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat, vel convallis elit fermentum pellentesque.</p>
+								{/* <img className="img-fluid mb-5" src="/img/others/img-18.png" alt=""/> */}
+								{/* <h1 className="text-white">Cyfral</h1> */}
+								{/* <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ullamcorper nisl erat, vel convallis elit fermentum pellentesque.</p> */}
 							</Col>
 						</Row>
 						<div className="d-flex justify-content-end pb-4">
 							<div>
-								<a className="text-white" href="/#" onClick={e => e.preventDefault()}>Term & Conditions</a>
+								{/* <a className="text-white" href="/#" onClick={e => e.preventDefault()}>Term & Conditions</a>
 								<span className="mx-2 text-white"> | </span>
-								<a className="text-white" href="/#" onClick={e => e.preventDefault()}>Privacy & Policy</a>
+								<a className="text-white" href="/#" onClick={e => e.preventDefault()}>Privacy & Policy</a> */}
 							</div>
 						</div>
 					</div>

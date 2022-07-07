@@ -9,6 +9,16 @@ const Dashboards = ({ match }) => {
       <Route path={`${match.url}/default`} component={lazy(() => import(`./default`))} />
       <Route path={`${match.url}/analytic`} component={lazy(() => import(`./analytic`))} />
       <Route path={`${match.url}/sales`} component={lazy(() => import(`./sales`))} />
+      <Route path={`${match.url}/cyfral/components/NewJobForm`} component={lazy(() => import(`./cyfral/components/NewJobForm`))} />
+      <Route path={`${match.url}/cyfral/components/NewTask`} component={lazy(() => import(`./cyfral/components/NewTask`))} />
+      <Route path={`${match.url}/cyfral/components/NewZone`} component={lazy(() => import(`./cyfral/components/NewZone`))} />
+      <Route path={`${match.url}/cyfral/components/NewProcese`} component={lazy(() => import(`./cyfral/components/NewProcese`))} />
+      <Route path={`${match.url}/cyfral/components/NewProduct`} component={lazy(() => import(`./cyfral/components/NewProduct`))} />
+      <Route path={`${match.url}/cyfral/components/NewStation`} component={lazy(() => import(`./cyfral/components/NewStation`))} />
+      <Route path={`${match.url}/cyfral/components/ListUsers`} component={lazy(() => import(`./cyfral/components/ListUsers`))} />
+      <Route path={`${match.url}/cyfral/components/ListProcesses`} component={lazy(() => import(`./cyfral/components/ListProcesses`))} />
+      <Route path={`${match.url}/cyfral/components/ListStation`} component={lazy(() => import(`./cyfral/components/ListStation`))} />
+      <Route path={`${match.url}/cyfral/components/ListZone`} component={lazy(() => import(`./cyfral/components/ListZone`))} />
       <Redirect from={`${match.url}`} to={`${match.url}/default`} />
     </Switch>
   </Suspense>

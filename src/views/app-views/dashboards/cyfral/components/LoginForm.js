@@ -1,24 +1,54 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { Button, Form, Input, Divider, Alert, Card, message as ms } from "antd";
+
+import { Button, Form, Input, Alert,Divider,message as ms } from "antd";
 import { MailOutlined, LockOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { GoogleSVG, FacebookSVG } from 'assets/svg/icon';
 import CustomIcon from 'components/util-components/CustomIcon'
 import { 
-	signIn, 
-	showLoading, 
-	showAuthMessage, 
-	hideAuthMessage, 
-	signInWithGoogle, 
-	signInWithFacebook 
-} from 'redux/actions/Auth';
+			signIn, 
+			showLoading, 
+			showAuthMessage, 
+			hideAuthMessage, 
+			signInWithGoogle, 
+			signInWithFacebook  } from 'redux/actions/Auth';
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion"
 import axios from 'axios';
 
 export const LoginForm = props => {
 	let history = useHistory();
+
+	const formSuccess = async (datos) => {
+		try {
+				const url = `https://cyfral.herokuapp.com/api/auth/login`;
+				const response = await axios.post(url, datos);
+
+				console.log(response);
+				console.log("pai my token nea", response.data.token);
+
+				let key = 'x-token'; 
+				let value =  response.data.token;
+				localStorage.setItem(key, value);
+				history.push('/')
+
+		} catch (error) {
+
+         console.log("Error: ", error);
+			ms.error({
+				content: 'Usuario o contraseña incorrecta',
+				className: 'custom-class',
+				style: {
+				  marginTop: '50px',
+				},
+			 });
+		}
+	}
+
+	const formFailed = (error) => {
+		console.log(error);
+	}
 
 	const { 
 		otherSignIn, 
@@ -37,38 +67,6 @@ export const LoginForm = props => {
 		message,
 		allowRedirect
 	} = props
-
-	const initialCredential = {
-		email: 'user1@themenate.net',
-		password: '2005ipo'
-	}
-
-	const onLogin = async (datos) => {
-		showLoading()
-		// signIn(values);
-		try {
-			const url = `https://cyfral.herokuapp.com/api/auth/login`;
-			const response = await axios.post(url, datos);
-
-			console.log(response);
-			console.log("pai my token nea", response.data.token);
-
-			let key = 'x-token'; 
-			let value =  response.data.token;
-			localStorage.setItem(key, value);
-			history.push('/')
-
-		}catch(error){
-			console.log("Error: ", error);
-			ms.error({
-				content: 'Usuario o contraseña incorrecta',
-				className: 'custom-class',
-				style: {
-				marginTop: '50px',
-				},
-		  });
-		}
-	};
 
 	const onGoogleLogin = () => {
 		showLoading()
@@ -94,9 +92,9 @@ export const LoginForm = props => {
 	const renderOtherSignIn = (
 		<div>
 			<Divider>
-				{/* <span className="text-muted font-size-base font-weight-normal">or connect with</span> */}
+				<span className="text-muted font-size-base font-weight-normal">or connect with</span>
 			</Divider>
-			{/* <div className="d-flex justify-content-center">
+			<div className="d-flex justify-content-center">
 				<Button 
 					onClick={() => onGoogleLogin()} 
 					className="mr-2" 
@@ -112,13 +110,12 @@ export const LoginForm = props => {
 				>
 					Facebook
 				</Button>
-			</div> */}
+			</div>
 		</div>
 	)
 
 	return (
-		<Card>
-			<h1 className='text-center'>Inicio de sesión</h1>
+		<>
 			<motion.div 
 				initial={{ opacity: 0, marginBottom: 0 }} 
 				animate={{ 
@@ -131,30 +128,35 @@ export const LoginForm = props => {
 				layout="vertical" 
 				name="login-form" 
 				// initialValues={initialCredential}
-				onFinish={onLogin}
+				onFinish={formSuccess}
+				onFinishFailed={formFailed}
 			>
 				<Form.Item 
 					name="email" 
-					label="Correo" 
+					label="Email" 
 					rules={[
 						{ 
 							required: true,
-							message: 'Porfavor ingrese su correo',
+							message: 'Porfavor ingresa tú correo',
 						},
 						{ 
 							type: 'email',
-							message: 'Ingrese un correo valido!'
+							message: 'Ingresa un correo valido!'
 						}
-					]}
-					hasFeedback
-				>
-					<Input prefix={<MailOutlined className="text-primary" />}/>
+					]}>
+					<Input 
+						//value={user.email}
+						//onChange={handleChange}
+						prefix={
+									<MailOutlined className="text-primary"
+							   />}
+					/>
 				</Form.Item>
 				<Form.Item 
 					name="password" 
 					label={
 						<div className={`${showForgetPassword? 'd-flex justify-content-between w-100 align-items-center' : ''}`}>
-							<span>Contraseña</span>
+							<span>Password</span>
 							{
 								showForgetPassword && 
 								<span 
@@ -169,16 +171,18 @@ export const LoginForm = props => {
 					rules={[
 						{ 
 							required: true,
-							message: 'Ingrese su contraseña',
+							message: 'Porfavor ingresa tu contraseña',
 						}
 					]}
-					hasFeedback
 				>
-					<Input.Password prefix={<LockOutlined className="text-primary" />}/>
+					<Input.Password 
+						//value={user.password}
+						//onChange={handleChange}
+						prefix={<LockOutlined className="text-primary" />}/>
 				</Form.Item>
 				<Form.Item>
 					<Button type="primary" htmlType="submit" block loading={loading}>
-						Ingresar
+						Sign In
 					</Button>
 				</Form.Item>
 				{
@@ -186,7 +190,7 @@ export const LoginForm = props => {
 				}
 				{ extra }
 			</Form>
-		</Card>
+		</>
 	)
 }
 
