@@ -283,8 +283,83 @@ const dashBoardNavTree = [{
       breadcrumb: false,
       submenu: []
     },
+    {
+      key: 'dashboards-NewOrder',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewOrder`,
+      title: 'Crear orden',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-ListOrders',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListOrders`,
+      title: 'Ver ordenes',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
+    {
+      key: 'dashboards-TaskStation',
+      path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/TaskStation`,
+      title: 'tareas estacion',
+      icon: UsergroupAddOutlined,
+      breadcrumb: false,
+      submenu: []
+    },
   ]
 }]
+
+const menu = [
+  {
+    key: 'dashboards-listUsers',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListUsers`,
+    title: 'Usuarios',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+  {
+    key: 'dashboards-ListStation',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListStation`,
+    title: 'Listado de estaciones',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+{
+    key: 'dashboards-ListZone',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListZone`,
+    title: 'Listado de zonas',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+{
+    key: 'dashboards-NewOrder',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewOrder`,
+    title: 'Crear orden',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+  {
+    key: 'dashboards-ListOrders',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListOrders`,
+    title: 'Ver ordenes',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+{
+    key: 'dashboards-TaskStation',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/TaskStation`,
+    title: 'tareas estacion',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+]
 
 const appsNavTree = [{
   key: 'apps',
@@ -1026,7 +1101,8 @@ const docsNavTree = [{
 }]
 
 const navigationConfig = [
-  ...dashBoardNavTree,
+  ...menu
+  // ...dashBoardNavTree,
   // ...appsNavTree,
   // ...componentsNavTree,
   // ...extraNavTree,

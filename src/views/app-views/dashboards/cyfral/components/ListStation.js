@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Card } from 'antd';
+import { Card, Row } from 'antd';
 
 const ListStation = () => {
 
@@ -14,22 +14,7 @@ const ListStation = () => {
             }
           })
 
-          let ListadousuarioHTML = ''
-
-           for (const dato of resp.data.station) {
-            
-            let usuarioHTML = `<div>
-                                    <p>${dato.station}<p>
-                                    <p>${dato.uid}<p>
-                                </div> `;
-      
-            ListadousuarioHTML += usuarioHTML;                  
-           }
-      
-           document.getElementById('mostrar').outerHTML = ListadousuarioHTML;
-
-          
-          setStation(...station, await resp.data.station)
+          setStation(resp.data.station)
           console.log(station);
         
         } catch (error) {
@@ -42,14 +27,16 @@ const ListStation = () => {
     }, [])
   return (
     <div>
-        
-        <Card title="Estacion" extra={<a href="#">More</a>} style={{ width: 300 }}>
-            <p id='mostrar'>
-                {
-                    console.log(station)
-                }
-            </p>
-        </Card>
+      <Row>
+        {
+          station.map( s => (
+
+            <Card key={s.uid} style={{ width: 300 }} className='m-1'>
+                <p>{s.station} </p>
+            </Card>
+          ))
+        }
+      </Row>
     </div>
   )
 }

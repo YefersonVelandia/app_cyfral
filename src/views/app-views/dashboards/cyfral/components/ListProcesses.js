@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { message } from "antd";
+import { Card, message } from "antd";
 import axios from 'axios';
 
 const ListProcesses = () => {
@@ -9,11 +9,11 @@ const ListProcesses = () => {
 
   const getProcesos = async () => {
 
-    const url = 'https://cyfral.herokuapp.com/api/products';
+    const url = 'https://cyfral.herokuapp.com/api/processes';
     try {
         const resp = await axios.get(url,{      
           headers: {
-              'x-token': localStorage.getItem('x-token')
+            'x-token': localStorage.getItem('x-token')
           }
         })
         setProcesos(...procesos, resp.data)
@@ -27,7 +27,13 @@ const ListProcesses = () => {
     getProcesos()
   },[])
   return (
-    <div>ListProcesses</div>
+    <div>
+      {/* {
+        procesos.map( p ()=> ())
+      } */}
+     <Card>
+      </Card>
+    </div>
   )
 }
 

@@ -56,7 +56,7 @@ export const LoginForm = props => {
 			let key = 'x-token'; 
 			let value =  response.data.token;
 			localStorage.setItem(key, value);
-			history.push('/')
+			history.push('/app/dashboards/default')
 
 		}catch(error){
 			console.log("Error: ", error);

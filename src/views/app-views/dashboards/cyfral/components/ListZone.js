@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Card, Table} from 'antd';
+import { Card, Row, Table} from 'antd';
 import { DeleteOutlined, EditFilled} from '@ant-design/icons';
 
 const ListZone = () => {
@@ -66,13 +66,17 @@ const ListZone = () => {
         }
     ]
   return (
-    <div>
-        <div className="table-responsive">
-            <Table columns={tableColumns} dataSource={station}/>
-            
-        </div>
-        {console.log(station)}
-    </div>
+    <>
+      <Row>
+        {
+          station.map( s => (
+            <Card key={s.uid} className='m-1' >
+                <p>{s.zone} </p>
+            </Card>
+          ))
+        }
+      </Row>
+    </>
   )
 }
 
