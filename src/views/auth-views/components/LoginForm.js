@@ -11,11 +11,13 @@ import {
 	showAuthMessage, 
 	hideAuthMessage, 
 	signInWithGoogle, 
-	signInWithFacebook 
+	signInWithFacebook,
+	authenticated
 } from 'redux/actions/Auth';
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { motion } from "framer-motion"
 import axios from 'axios';
+import { APP_PREFIX_PATH } from 'configs/AppConfig';
 
 export const LoginForm = props => {
 	let history = useHistory();
@@ -35,7 +37,8 @@ export const LoginForm = props => {
 		redirect,
 		showMessage,
 		message,
-		allowRedirect
+		allowRedirect,
+		authenticated
 	} = props
 
 	const initialCredential = {
@@ -44,7 +47,8 @@ export const LoginForm = props => {
 	}
 
 	const onLogin = async (datos) => {
-		showLoading()
+		// showLoading()
+		// history.push('/')
 		// signIn(values);
 		try {
 			const url = `https://cyfral.herokuapp.com/api/auth/login`;
@@ -56,8 +60,7 @@ export const LoginForm = props => {
 			let key = 'x-token'; 
 			let value =  response.data.token;
 			localStorage.setItem(key, value);
-			history.push('/app/dashboards/default')
-
+			authenticated(value)
 		}catch(error){
 			console.log("Error: ", error);
 			ms.error({
@@ -215,7 +218,8 @@ const mapDispatchToProps = {
 	showLoading,
 	hideAuthMessage,
 	signInWithGoogle,
-	signInWithFacebook
+	signInWithFacebook,
+	authenticated
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

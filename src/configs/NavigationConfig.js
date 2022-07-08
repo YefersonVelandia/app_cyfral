@@ -1101,8 +1101,8 @@ const docsNavTree = [{
 }]
 
 const navigationConfig = [
-  ...menu
-  // ...dashBoardNavTree,
+  ...menu,
+  ...dashBoardNavTree,
   // ...appsNavTree,
   // ...componentsNavTree,
   // ...extraNavTree,
