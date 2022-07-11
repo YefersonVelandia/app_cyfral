@@ -22,6 +22,7 @@ const Dashboards = ({ match }) => {
       <Route path={`${match.url}/cyfral/components/NewOrder`} component={lazy(() => import(`./cyfral/components/NewOrder`))} />
       <Route path={`${match.url}/cyfral/components/ListOrders`} component={lazy(() => import(`./cyfral/components/ListOrders`))} />
       <Route path={`${match.url}/cyfral/components/TaskStation`} component={lazy(() => import(`./cyfral/components/TaskStation`))} />
+      <Route path={`${match.url}/cyfral/components/ProductList`} component={lazy(() => import(`./cyfral/components/ProductList`))} />
       <Redirect from={`${match.url}`} to={`${match.url}/default`} />
     </Switch>
   </Suspense>

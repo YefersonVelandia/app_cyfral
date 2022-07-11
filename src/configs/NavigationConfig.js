@@ -335,7 +335,7 @@ const menu = [
     breadcrumb: false,
     submenu: []
   },
-{
+  {
     key: 'dashboards-NewOrder',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewOrder`,
     title: 'Crear orden',
@@ -351,10 +351,18 @@ const menu = [
     breadcrumb: false,
     submenu: []
   },
-{
+  {
     key: 'dashboards-TaskStation',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/TaskStation`,
     title: 'tareas estacion',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+  {
+    key: 'dashboards-ProductList',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ProductList`,
+    title: 'Productos',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []

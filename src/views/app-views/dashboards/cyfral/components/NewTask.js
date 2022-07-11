@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, Select, message, Card } from "antd";
 import axios from 'axios';
 const { Option } = Select;
-const children = [];
-const users = [];
-for (let i = 10; i < 36; i++) {
-  children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
-}
 
 const rules = {
     name: [
@@ -152,13 +147,11 @@ const NewTask = () => {
                  showSearch
                  placeholder="Selecciona una estación"
                >
-               { estaciones.map((estacion) => {
-                    return(
-                        <Option key={estacion.uid} value={estacion.uid}>
-                           {estacion.station}
-                        </Option>
-                     );
-                  })
+               { estaciones.map((estacion) => (
+                     <Option key={estacion.uid} value={estacion.uid}>
+                        {estacion.station}
+                     </Option>
+                  ))
                }
             </Select>
 

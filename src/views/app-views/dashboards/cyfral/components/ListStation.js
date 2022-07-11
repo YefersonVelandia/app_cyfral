@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Card, Row } from 'antd';
+import { Card, Row, Spin } from 'antd';
 
 const ListStation = () => {
 
@@ -26,18 +26,22 @@ const ListStation = () => {
         GetStations();
     }, [])
   return (
-    <div>
-      <Row>
-        {
-          station.map( s => (
+    <>
+      {
+        station ?
+          <Row>
+            {
+              station.map( s => (
+                <Card key={s.uid} style={{ width: 300 }} className='m-1'>
+                    <p>{s.station} </p>
+                </Card>
+              ))
+            }
+          </Row>
+        : <Spin />
 
-            <Card key={s.uid} style={{ width: 300 }} className='m-1'>
-                <p>{s.station} </p>
-            </Card>
-          ))
-        }
-      </Row>
-    </div>
+      }
+    </>
   )
 }
 

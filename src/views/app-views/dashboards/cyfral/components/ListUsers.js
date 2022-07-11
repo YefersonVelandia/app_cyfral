@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, Table} from 'antd';
+import { Card, Spin, Table} from 'antd';
 import { DeleteOutlined, EditFilled} from '@ant-design/icons';
-import Loading from 'views/app-views/components/data-display/card/Loading';
 
 const ListUsers = () => {
 
@@ -13,11 +12,6 @@ const ListUsers = () => {
       key: '1',
       title: 'Nombre',
       dataIndex: 'name',
-      // render: (_, record) => (
-      //   <div className="d-flex">
-      //     <AvatarStatus  name={record.name} subTitle={record.email}/>
-      //   </div>
-      // ),
       sorter: {
         compare: (a, b) => {
           a = a.name.toLowerCase();
@@ -93,14 +87,14 @@ const ListUsers = () => {
   }
 
   const GetUSers = async () =>{
-    const url = 'https://cyfral.herokuapp.com/api/users';
+    const url = 'https://cyfral.herokuapp.com/api/users/operator';
     try {
       const resp = await axios.get(url,{      
         headers: {
           'x-token': localStorage.getItem('x-token')
         }
       })
-     setDataUsers(resp.data.users);
+     setDataUsers(resp.data.operator);
     } catch (error) {
      console.log(error);     
     }
@@ -111,12 +105,8 @@ const ListUsers = () => {
       {
         dataUsers 
           ? 
-            <Card bodyStyle={{'padding': '0px'}}>
-              <div className="table-responsive">
-                <Table key={dataUsers.uid} columns={tableColumns} dataSource={dataUsers} />
-              </div>
-            </Card>
-          : Loading
+            <Table key={dataUsers.uid} columns={tableColumns} dataSource={dataUsers} />
+          : <Spin />
       }
     </>
   )
