@@ -1,7 +1,8 @@
-import { Card, DatePicker, InputNumber, message, Form, Input, Button, Row, TreeSelect, Alert } from 'antd'
+import { Card, DatePicker, InputNumber, message, Form, Input, Button, Row, TreeSelect, Select, Col } from 'antd'
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
+const { Option } = Select;
 const rules = {
   cliente: [
     {
@@ -10,7 +11,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'Nombre del cliente no puede ser un caracter en blanco'
     },
   ],
   fechaDeEntrega: [
@@ -21,7 +22,7 @@ const rules = {
     { 
       type: 'date',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'Fecha de entrega no puede ser un caracter en blanco'
     },
   ],
   OF: [
@@ -31,7 +32,7 @@ const rules = {
     },
     { 
       type: 'number',
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'es necesario conocer el orden de facturación'
     },
   ],
   NroPedido: [
@@ -41,7 +42,7 @@ const rules = {
     },
     { 
       type: 'number',
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'N° de pedido no puede ser un caracter en blanco'
     },
   ],
   codigo: [
@@ -51,7 +52,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'El codigo no puede ser un caracter en blanco'
     },
   ],
   prefijo: [
@@ -61,7 +62,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'El prefijo del producto no puede ser un caracter en blanco'
     },
   ],
   referencia: [
@@ -219,7 +220,8 @@ const formSuccess = async (datos) => {
     document.getElementById("miformulario").reset();
   } catch (error) {
     console.error("Error: ", {error});
-    message.error('Error al crear usuario', 4);
+    // console.error("Error: ", error.response.data.errors);
+    message.error('Error al crear Orden', 4);
   }
 }
 
@@ -228,7 +230,22 @@ const formFailed = (error) => {
 }
 
 const NewOrder = (props) => {
+  
+  const [products, setProducts] = useState([])
+  const getProducts = async () =>{
+    const url = 'https://cyfral.herokuapp.com/api/products';
+    const resp = await axios.get(url, {      
+      headers: {
+          'x-token': localStorage.getItem('x-token')
+      }
+    })
+    setProducts(resp.data.product)
+    console.log("STATE",products);
+  }
 
+  useEffect(() => {
+    getProducts()
+  }, [])
   const {loading } = props
 
   return (
@@ -241,205 +258,269 @@ const NewOrder = (props) => {
          onFinish={formSuccess}
          onFinishFailed={formFailed}
       >
-        <Row>
-         <Form.Item 
-            name='cliente' 
-            label='Nombre del Cliente' 
-            rules={rules.cliente}
-            hasFeedback
-         >
-            <Input size='small' style={{ width: '450px' }}/>
-         </Form.Item>
-
-         <Form.Item
-            label="fechaDeEntrega"
-            name='fechaDeEntrega'
-            rules={rules.fechaDeEntrega}
-            className='ml-4'
-            hasFeedback
-         >
-           <DatePicker style={{ width: '450px' }} className='ml-4'/>
-
-         </Form.Item>
+        <Row gutter={[8,8]}>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+              name='cliente' 
+              label='Nombre del Cliente' 
+              rules={rules.cliente}
+              hasFeedback
+            >
+              <Input size='small' />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}> 
+            <Form.Item
+                label="fechaDeEntrega"
+                name='fechaDeEntrega'
+                rules={rules.fechaDeEntrega}
+                hasFeedback
+            >
+              <DatePicker style={{ width: '100%' }}/>
+            </Form.Item>
+          </Col>
         </Row>
 
-        <Row>
-         <Form.Item 
-            name='OF' 
-            label='Oficina' 
-            rules={rules.OF}
-            hasFeedback
-         >
-            <InputNumber style={{ width: '450px' }}/>
-         </Form.Item>
-         <Form.Item 
-            name='NroPedido' 
-            label='Nro Pedido' 
-            rules={rules.NroPedido}
-            hasFeedback
-            className='ml-4'
-         >
-            <InputNumber style={{ width: '450px' }} className='ml-4'/>
-         </Form.Item>
+        <Row gutter={[8,8]}>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+              name='OF' 
+              label='Orden de facturación' 
+              rules={rules.OF}
+              hasFeedback
+            >
+              <InputNumber style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='NroPedido' 
+                label='Nro Pedido' 
+                rules={rules.NroPedido}
+                hasFeedback
+            >
+                <InputNumber style={{ width: '100%' }}/>
+            </Form.Item>
+          </Col>
         </Row>
 
-        <Row>
+        <Row gutter={[8,8]}>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name="codigo" 
             label="codigo" 
             rules={rules.codigo}
             hasFeedback
          >
-            <Input style={{ width: '450px' }}/>
+            <Input />
          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='prefijo'
-            label='Ingrese el prefijo del producto'
+            label='Seleccione el producto'
             rules={rules.prefijo}
-            className='ml-4'
             hasFeedback
          >
-            <Input size="small" style={{ width: '450px' }} className='ml-4' />
+          <Select
+          showSearch
+          placeholder="Seleccione el producto"
+          optionFilterProp="children"
+          >
+            {
+              products.map( (produc)=>(
+                <Option key={produc.uid} value={produc.prefijo}> 
+                  {produc.name} - ({produc.prefijo}) 
+                </Option>
+              ))
+            }
+          </Select>
          </Form.Item>
+        </Col>
 
         </Row>
-        <Row  >
+        <Row gutter={[8,8]}>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='referencia'
             label='Ingrese la referencia del producto'
             rules={rules.referencia}
             hasFeedback
          >
-            <Input size="small" style={{ width: '450px' }}/>
+            <Input size="small"  />
          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='cantidad'
             label='Ingrese la cantidad del producto'
             rules={rules.cantidad}
-            className='ml-4'
             hasFeedback
          >
-            <InputNumber size="small" style={{ width: '450px' }} className='ml-4'/>
+            <InputNumber size="small" style={{ width: '100%' }} min={0}/>
          </Form.Item>
+        </Col>
         </Row>
 
-        <Row>
-         <Form.Item 
-            name='NF'
-            label='Numero de filas'
-            rules={rules.NF}
-            hasFeedback
-         >
-            <InputNumber size="small" style={{ width: '450px' }} />
-         </Form.Item>
-         <Form.Item 
-            name='paso'
-            label='paso'
-            rules={rules.paso}
-            className='ml-4'
-            hasFeedback
-         >
-            <InputNumber size="small" style={{ width: '450px' }} className='ml-4'/>
-         </Form.Item>
+        <Row gutter={[8,8]}>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='NF'
+                label='Numero de filas'
+                rules={rules.NF}
+                hasFeedback
+            >
+                <InputNumber size="small" style={{ width: '100%' }} min={0}/>
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='paso'
+                label='paso'
+                rules={rules.paso}
+                hasFeedback
+            >
+              <TreeSelect
+                treeData={[
+                  {
+                    title: '7.8',
+                    value: 7.8 
+                  },
+                  {
+                    title: '10.0',
+                    value: 10.0
+                  },
+                  {
+                    title: '11.1',
+                    value: 10.0
+                  },
+                  {
+                    title: '14.0',
+                    value: 14.0
+                  },
+                  {
+                    title: '18.0',
+                    value: 18.0
+                  },
+                ]}
+              />
+            </Form.Item>
+          </Col>
         </Row>
 
-        <Row>
+        <Row gutter={[8,8]}>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='anchoTubo'
             label='anchoTubo'
             rules={rules.anchoTubo}
             hasFeedback
          >
-            <InputNumber size="small" style={{ width: '450px' }} />
+            <InputNumber size="small" style={{ width: '100%' }} min={0} />
          </Form.Item>
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='cantidadTubo'
             label='cantidadTubo'
             rules={rules.cantidadTubo}
-            className='ml-4'
             hasFeedback
          >
-            <InputNumber size="small" style={{ width: '450px' }} className='ml-4'/>
+            <InputNumber size="small" style={{ width: '100%' }} min={0} />
          </Form.Item>
+        </Col>
         </Row>
 
-        <Row>
+        <Row gutter={[8,8]}>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='longitudTubo'
             label='longitudTubo'
             rules={rules.longitudTubo}
             hasFeedback
          >
-            <InputNumber size="small" style={{ width: '450px' }}/>
+            <InputNumber size="small" style={{ width: '100%' }} min={0} />
          </Form.Item>
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
          <Form.Item 
             name='anchoAleta'
             label='anchoAleta'
             rules={rules.anchoAleta}
-            className='ml-4'
             hasFeedback
          >
-            <InputNumber size="small" style={{ width: '450px' }} className='ml-4'/>
+            <InputNumber size="small" style={{ width: '100%' }} min={0}/>
          </Form.Item>
+        </Col>
         </Row>
 
-        <Row>
-         <Form.Item 
-            name='cantidadAleta'
-            label='cantidadAleta'
-            rules={rules.cantidadAleta}
-            hasFeedback
-         >
-            <InputNumber size="small" style={{ width: '450px' }} />
-         </Form.Item>
-         <Form.Item 
-            name='longitudAleta'
-            label='longitudAleta'
-            rules={rules.longitudAleta}
-            className='ml-4'
-            hasFeedback
-         >
-            <InputNumber size="small" style={{ width: '450px' }} className='ml-4'/>
-         </Form.Item>
+        <Row gutter={[8,8]}>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='cantidadAleta'
+                label='cantidadAleta'
+                rules={rules.cantidadAleta}
+                hasFeedback
+            >
+                <InputNumber size="small" style={{ width: '100%' }} min={0} />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='longitudAleta'
+                label='longitudAleta'
+                rules={rules.longitudAleta}
+                hasFeedback
+            >
+                <InputNumber size="small" style={{ width: '100%' }} min={0} />
+            </Form.Item>
+          </Col>
         </Row>
         
-        <Row>
-         <Form.Item 
-            name='PC'
-            label='PC'
-            rules={rules.PC}
-            hasFeedback
-         >
-          <TreeSelect
-            treeData={[
-              {
-                title: 'Si',
-                value: true 
-              },
-              {
-                title: 'No',
-                value: false
-              }
-            ]}
-            style={{ width: '450px' }}
-          />
-         </Form.Item>
-         <Form.Item 
-            name='UES_Colectores'
-            label='UES_Colectores'
-            rules={rules.UES_Colectores}
-            hasFeedback
-         >
-            <Input size="small" style={{ width: '450px' }} className='ml-2'/>
-         </Form.Item>
+        <Row gutter={[8,8]}>
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='PC'
+                label='Partes Clientes'
+                rules={rules.PC}
+                hasFeedback
+            >
+              <TreeSelect
+                treeData={[
+                  {
+                    title: 'Si',
+                    value: true 
+                  },
+                  {
+                    title: 'No',
+                    value: false
+                  }
+                ]}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Form.Item 
+                name='UES_Colectores'
+                label='UES_Colectores'
+                rules={rules.UES_Colectores}
+                hasFeedback
+            >
+                <Input size="small" />
+            </Form.Item>
+          </Col>
         </Row>
          <Form.Item 
             name='observaciones'
-            label='observaciones'
-            rules={rules.observaciones}
+            label='Observaciones'
+            rules={rules.observaciones} 
             hasFeedback
          >
-            <Input size="small" />
+          <Input.TextArea ></Input.TextArea>
          </Form.Item>
 
 

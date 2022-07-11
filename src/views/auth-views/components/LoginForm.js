@@ -53,16 +53,12 @@ export const LoginForm = props => {
 		try {
 			const url = `https://cyfral.herokuapp.com/api/auth/login`;
 			const response = await axios.post(url, datos);
-
-			console.log(response);
-			console.log("pai my token nea", response.data.token);
-
 			let key = 'x-token'; 
 			let value =  response.data.token;
 			localStorage.setItem(key, value);
 			authenticated(value)
 		}catch(error){
-			console.log("Error: ", error);
+			console.log("Error: ", error.response.data.msg);
 			ms.error({
 				content: 'Usuario o contraseña incorrecta',
 				className: 'custom-class',
