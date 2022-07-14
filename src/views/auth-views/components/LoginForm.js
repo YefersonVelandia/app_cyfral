@@ -51,11 +51,13 @@ export const LoginForm = props => {
 		// history.push('/')
 		// signIn(values);
 		try {
-			const url = `https://cyfral.herokuapp.com/api/auth/login`;
+			// const url = `https://cyfral.herokuapp.com/api/auth/login`;
+			const url = `http://localhost:9000/api/auth/login`;
 			const response = await axios.post(url, datos);
 			let key = 'x-token'; 
 			let value =  response.data.token;
 			localStorage.setItem(key, value);
+			localStorage.setItem("user", response.data.user.role);
 			authenticated(value)
 		}catch(error){
 			console.log("Error: ", error.response.data.msg);

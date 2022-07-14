@@ -11,7 +11,7 @@ export const THEME_CONFIG = {
 	sideNavTheme: SIDE_NAV_LIGHT,
 	locale: 'en',
 	navType: NAV_TYPE_SIDE,
-	topNavColor: '#3e82f7',
+	topNavColor: '#000',
 	headerNavColor: '',
 	mobileNav: false,
 	currentTheme: 'light',

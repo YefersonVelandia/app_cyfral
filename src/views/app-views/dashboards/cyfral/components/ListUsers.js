@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Card, Spin, Table} from 'antd';
+import { Table} from 'antd';
 import { DeleteOutlined, EditFilled} from '@ant-design/icons';
+import Loading from 'components/shared-components/Loading';
 
 const ListUsers = () => {
 
   const [dataUsers, setDataUsers] = useState([]);
+  const [data, setData] = useState(false);
 
   const tableColumns = [
     {
@@ -95,6 +97,7 @@ const ListUsers = () => {
         }
       })
      setDataUsers(resp.data.operator);
+     setData(true)
     } catch (error) {
      console.log(error);     
     }
@@ -103,10 +106,10 @@ const ListUsers = () => {
   return (
     <>
       {
-        dataUsers 
+        data 
           ? 
             <Table key={dataUsers.uid} columns={tableColumns} dataSource={dataUsers} />
-          : <Spin />
+          : <Loading />
       }
     </>
   )

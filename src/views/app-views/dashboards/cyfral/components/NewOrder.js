@@ -72,7 +72,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'La referencia no puede ser un caracter en blanco'
     },
   ],
   cantidad: [
@@ -83,7 +83,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'La cantidad no puede ser un caracter en blanco'
     },
   ],
   NF: [
@@ -94,19 +94,18 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'Numero de filas no puede ser un caracter en blanco'
     },
   ],
   paso: [
     {
-      
       required: true,
       message: 'Por favor complete el campo'
     },
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'El Paso no puede ser un caracter en blanco'
     },
   ],
   anchoTubo: [
@@ -117,7 +116,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'El ancho de tubo no puede ser un caracter en blanco'
     },
   ],
   cantidadTubo: [
@@ -128,7 +127,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'Cantidad de tubo no puede ser un caracter en blanco'
     },
   ],
   longitudTubo: [
@@ -139,7 +138,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'La longitud de tubo no puede ser un caracter en blanco'
     },
   ],
   anchoAleta: [
@@ -150,7 +149,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'El ancho de aleta no puede ser un caracter en blanco'
     },
   ],
   cantidadAleta: [
@@ -161,7 +160,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'La cantidad de aleta no puede ser un caracter en blanco'
     },
   ],
   longitudAleta: [
@@ -172,7 +171,7 @@ const rules = {
     { 
       type: 'number',
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'La longitud de aleta no puede ser un caracter en blanco'
     },
   ],
   PC: [
@@ -192,7 +191,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'UES Colectores no puede ser un caracter en blanco'
     },
   ],
   observaciones: [
@@ -202,7 +201,7 @@ const rules = {
     },
     { 
       whitespace: true,
-      message: 'Nombre del operarion no puede ser un caracter en blanco'
+      message: 'Las observaciones no puede ser un caracter en blanco'
     },
   ]
 }
@@ -249,7 +248,7 @@ const NewOrder = (props) => {
   const {loading } = props
 
   return (
-    <Card>
+    <Card className='shadow-lg'>
       <h3 className='text-center mb-4'>Crear Orden de Producción</h3>
       <Form 
          id='miformulario'

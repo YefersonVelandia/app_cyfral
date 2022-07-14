@@ -206,7 +206,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-newJob',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewJobForm`,
-      title: 'Crear usuario',
+      title: 'crear.usuario',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -214,7 +214,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-listUsers',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListUsers`,
-      title: 'Usuarios',
+      title: 'usuarios',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -222,7 +222,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-newTask',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewTask`,
-      title: 'Crear Tarea',
+      title: 'crear.Tarea',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -230,7 +230,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-NewZone',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewZone`,
-      title: 'Crear Zona',
+      title: 'crear.Zona',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -238,7 +238,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-NewProcese',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewProcese`,
-      title: 'Crear Proceso',
+      title: 'crear.Proceso',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -246,7 +246,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-NewProduct',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewProduct`,
-      title: 'Crear Producto',
+      title: 'crear.Producto',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -254,7 +254,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-NewStation',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewStation`,
-      title: 'Crear estacion',
+      title: 'crear.estacion',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -262,7 +262,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-ListProcesses',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListProcesses`,
-      title: 'Listado de procesos',
+      title: 'listado.de.procesos',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -270,7 +270,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-ListStation',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListStation`,
-      title: 'Listado de estaciones',
+      title: 'listado.de.estaciones',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -278,7 +278,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-ListZone',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListZone`,
-      title: 'Listado de zonas',
+      title: 'listado.de.zonas',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -286,7 +286,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-NewOrder',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewOrder`,
-      title: 'Crear orden',
+      title: 'crear.orden',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -294,7 +294,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-ListOrders',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListOrders`,
-      title: 'Ver ordenes',
+      title: 'ver.ordenes',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -302,7 +302,7 @@ const dashBoardNavTree = [{
     {
       key: 'dashboards-TaskStation',
       path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/TaskStation`,
-      title: 'tareas estacion',
+      title: 'tareas.estacion',
       icon: UsergroupAddOutlined,
       breadcrumb: false,
       submenu: []
@@ -312,49 +312,49 @@ const dashBoardNavTree = [{
 
 const menu = [
   {
-    key: 'dashboards-listUsers',
+    key: 'dashboards-listUsers2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListUsers`,
-    title: 'Usuarios',
+    title: 'usuarios',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
   },
   {
-    key: 'dashboards-ListStation',
+    key: 'dashboards-ListStation2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListStation`,
-    title: 'Listado de estaciones',
+    title: 'listado.de.estaciones',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
   },
 {
-    key: 'dashboards-ListZone',
+    key: 'dashboards-ListZone2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListZone`,
-    title: 'Listado de zonas',
+    title: 'listado.de.zonas',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
   },
   {
-    key: 'dashboards-NewOrder',
+    key: 'dashboards-NewOrder2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/NewOrder`,
-    title: 'Crear orden',
+    title: 'crear.orden',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
   },
   {
-    key: 'dashboards-ListOrders',
+    key: 'dashboards-ListOrders2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ListOrders`,
-    title: 'Ver ordenes',
+    title: 'ver.ordenes',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
   },
   {
-    key: 'dashboards-TaskStation',
+    key: 'dashboards-TaskStation2',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/TaskStation`,
-    title: 'tareas estacion',
+    title: 'tareas.estacion',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []
@@ -362,7 +362,15 @@ const menu = [
   {
     key: 'dashboards-ProductList',
     path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/ProductList`,
-    title: 'Productos',
+    title: 'productos',
+    icon: UsergroupAddOutlined,
+    breadcrumb: false,
+    submenu: []
+  },
+  {
+    key: 'dashboards-home',
+    path: `${APP_PREFIX_PATH}/dashboards/cyfral/components/home`,
+    title: 'home',
     icon: UsergroupAddOutlined,
     breadcrumb: false,
     submenu: []

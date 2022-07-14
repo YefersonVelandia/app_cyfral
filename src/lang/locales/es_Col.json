@@ -1,5 +1,5 @@
 {
-	"home": "Home",
+	"home": "Inicio",
 	
 	"sidenav.dashboard": "Dashboard",
 	"sidenav.dashboard.default": "Default",
@@ -7,20 +7,20 @@
 	"sidenav.dashboard.sales": "Sales",
 
 	"sidenav.apps": "Apps",
-	"sidenav.apps.mail": "Mail",
+	"sidenav.apps.mail": "Correo",
 	"sidenav.apps.chat": "Chat",
-	"sidenav.apps.calendar": "Calendar",
-	"sidenav.apps.project": "Project",
-	"sidenav.apps.project.list": "List",
+	"sidenav.apps.calendar": "Calendario",
+	"sidenav.apps.project": "Proyecto",
+	"sidenav.apps.project.list": "Lista",
 	"sidenav.apps.project.scrumboard": "Scrumboard",
 	"sidenav.apps.ecommerce": "E-Commerce",
-	"sidenav.apps.ecommerce.product": "Product",
-	"sidenav.apps.ecommerce.editProduct": "Edit Product",
-	"sidenav.apps.ecommerce.addProduct": "Add Product",
-	"sidenav.apps.ecommerce.productList": "Product List",
-	"sidenav.apps.ecommerce.orders": "Orders",
+	"sidenav.apps.ecommerce.product": "Producto",
+	"sidenav.apps.ecommerce.editProduct": "Editar Producto",
+	"sidenav.apps.ecommerce.addProduct": "Agregar Producto",
+	"sidenav.apps.ecommerce.productList": "Lista de productos",
+	"sidenav.apps.ecommerce.orders": "Ordenes",
 
-	"sidenav.components": "Components",
+	"sidenav.components": "Componentes",
 	"sidenav.components.general": "General",
 	"sidenav.components.general.button": "Button",
 	"sidenav.components.general.icon": "Icon",
@@ -29,12 +29,12 @@
 	"sidenav.components.layout.grid": "Grid",
 	"sidenav.components.layout.layout": "Layout",
 
-	"sidenav.components.navigation": "Navigation",
+	"sidenav.components.navigation": "Navegacion",
 	"sidenav.components.navigation.affix": "Affix",
 	"sidenav.components.navigation.breadcrumb": "Breadcrumb",
 	"sidenav.components.navigation.dropdown": "Dropdown",
 	"sidenav.components.navigation.menu": "Menu",
-	"sidenav.components.navigation.pagination": "Pagination",
+	"sidenav.components.navigation.pagination": "Paginación",
 	"sidenav.components.navigation.pageHeader": "Page Header",
 	"sidenav.components.navigation.steps": "Steps",
 
@@ -124,20 +124,5 @@
 
 	"sidenav.docs": "Docs",
 	"sidenav.docs.documentation": "Documentation",
-	"sidenav.docs.changelog": "Changelog",
-
-	"usuarios": "Usuarios",
-	"listado.de.estaciones": "Listado de estaciones",
-	"listado.de.zonas": "Listado de zonas",
-	"crear.orden": "Crear orden",
-	"ver.ordenes": "Ver ordenes",
-	"tareas.estacion": "tareas estacion",
-	"productos": "Productos",
-	"crear.usuario": "Crear usuario",
-	"crear.Tarea": "Crear Tarea",
-	"crear.Zona": "Crear Zona",
-	"crear.Proceso": "Crear Proceso",
-	"crear.Producto": "Crear Producto",
-	"crear.estacion": "Crear estacion",
-	"listado.de.procesos": "Listado de procesos"
+	"sidenav.docs.changelog": "Changelog"
 }
